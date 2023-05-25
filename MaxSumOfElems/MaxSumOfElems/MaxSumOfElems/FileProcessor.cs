@@ -42,36 +42,31 @@ namespace MaxSumOfElems
             brokenLines.Clear();
             int numberMaxSumLine = 0;
             decimal maxSum = 0m;
-            using (FileStream fileStream = new(path, FileMode.Open, FileAccess.Read))
-            using (StreamReader reader = new(fileStream))
+            string[] lines = File.ReadAllLines(path);
+            for (int i = 0; i < lines.Length; i++)
             {
-                int currentLine = 0;
-                string? line;
-                while ((line = reader.ReadLine()) != null)
+                decimal tempMaxSum = 0m;
+                string[] numbers = lines[i].Split(',');
+                foreach (string number in numbers)
                 {
-                    ++currentLine;
-                    decimal tempMaxSum = 0m;
-                    string[] numbers = line.Split(',');
-                    foreach (string number in numbers)
+                    if (decimal.TryParse(number, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal temp))
                     {
-                        if (decimal.TryParse(number, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal temp))
-                        {
-                            tempMaxSum += temp;
-                        }
-                        else
-                        {
-                            brokenLines.Add(currentLine);
-                            tempMaxSum = 0m;
-                            break;
-                        }
+                        tempMaxSum += temp;
                     }
-                    if (tempMaxSum > maxSum)
+                    else
                     {
-                        maxSum = tempMaxSum;
-                        numberMaxSumLine = currentLine;
+                        brokenLines.Add(i + 1);
+                        tempMaxSum = 0m;
+                        break;
                     }
                 }
+                if (tempMaxSum > maxSum)
+                {
+                    maxSum = tempMaxSum;
+                    numberMaxSumLine = i + 1;
+                }
             }
+
             return numberMaxSumLine;
         }
 

@@ -3,7 +3,7 @@ using System.Globalization;
 
 Console.WriteLine("Enter full path to file:");
 string? path = Console.ReadLine();
-//path = @"TestData.txt"; // Uncomment this line for testing from TestData.txt.
+path = @"TestData.txt"; // Uncomment this line for testing from TestData.txt.
 try
 {
     FileProcessor fp = new(path);
