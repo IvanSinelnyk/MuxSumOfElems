@@ -10,7 +10,7 @@ try
     int lineNumberWithMaxSum = fp.LineNumberWithMaxSumOfElems();
     Console.WriteLine("Number of line with maximum sum of numeric elements:");
     Console.WriteLine(lineNumberWithMaxSum);
-    int[] brokenLines = fp.GetListOfBrokenLines();
+    int[] brokenLines = fp.BrokenLines;
     Console.WriteLine("Numbers of lines with non numeric elements:");
     foreach (int num in brokenLines)
     {

@@ -11,6 +11,23 @@ namespace MaxSumOfElems
     {
         private readonly string path;
 
+        private readonly List<int> brokenLines = new();
+        public int[] BrokenLines
+        {
+            get
+            {
+                if (brokenLines.Any())
+                {
+                    return brokenLines.ToArray();
+                }
+                else
+                {
+                    LineNumberWithMaxSumOfElems();
+                    return brokenLines.ToArray();
+                }
+            }
+        }
+
         public FileProcessor(string? path)
         {
             if (path == null)
@@ -22,6 +39,7 @@ namespace MaxSumOfElems
 
         public int LineNumberWithMaxSumOfElems()
         {
+            brokenLines.Clear();
             int numberMaxSumLine = 0;
             decimal maxSum = 0m;
             using (FileStream fileStream = new(path, FileMode.Open, FileAccess.Read))
@@ -42,6 +60,7 @@ namespace MaxSumOfElems
                         }
                         else
                         {
+                            brokenLines.Add(currentLine);
                             tempMaxSum = 0m;
                             break;
                         }
@@ -56,37 +75,11 @@ namespace MaxSumOfElems
             return numberMaxSumLine;
         }
 
-        public int[] GetListOfBrokenLines()
-        {
-            var list = new List<int>();
-            using (FileStream fileStream = new(path, FileMode.Open, FileAccess.Read))
-            using (StreamReader reader = new(fileStream))
-            {
-                int currentLine = 0;
-                string? line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    ++currentLine;
-                    string[] numbers = line.Split(',');
-                    foreach (string number in numbers)
-                    {
-                        if (!decimal.TryParse(number, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal _))
-                        {
-                            list.Add(currentLine);
-                        }
-                    }
-                }
-            }
-            var array = list.ToArray();
-            return array;
-        }
-
         public void GetTxtFileWithBrokenLines()
         {
             using (StreamWriter writer = new(@"..\..\..\..\BrokenLinesList.txt"))
             {
-                int[] result = GetListOfBrokenLines();
-                foreach (int number in result)
+                foreach (int number in BrokenLines)
                 {
                     writer.Write(number + " ");
                 }
