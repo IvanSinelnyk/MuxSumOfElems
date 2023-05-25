@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
+
 
 namespace MaxSumOfElems
 {
@@ -70,10 +66,11 @@ namespace MaxSumOfElems
             return numberMaxSumLine;
         }
 
+        // TODO: move this method to test project
         public void GetTxtFileWithBrokenLines()
         {
-            using (StreamWriter writer = new(@"..\..\..\..\BrokenLinesList.txt"))
-            {
+            using (StreamWriter writer = new(@"..\..\..\BrokenLinesList.txt"))
+            {                
                 foreach (int number in BrokenLines)
                 {
                     writer.Write(number + " ");

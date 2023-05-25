@@ -1,32 +1,35 @@
 ﻿using MaxSumOfElems;
 using System.Globalization;
 
-Console.WriteLine("Enter full path to file:");
-string? path = Console.ReadLine();
-path = @"TestData.txt"; // Uncomment this line for testing from TestData.txt.
-try
+string? path1;
+do
 {
-    FileProcessor fp = new(path);
-    int lineNumberWithMaxSum = fp.LineNumberWithMaxSumOfElems();
-    Console.WriteLine("Number of line with maximum sum of numeric elements:");
-    Console.WriteLine(lineNumberWithMaxSum);
-    int[] brokenLines = fp.BrokenLines;
-    Console.WriteLine("Numbers of lines with non numeric elements:");
-    foreach (int num in brokenLines)
+    Console.WriteLine("Enter full path to file:");
+    path1 = Console.ReadLine();
+    path1 = @"TestData.txt"; // Uncomment this line for testing from TestData.txt.
+    if (path1 == "x")
     {
-        Console.Write(num + " ");
+        Environment.Exit(0);
     }
-    fp.GetTxtFileWithBrokenLines();
-    Console.WriteLine();
-    Console.WriteLine("You can find the list of \"broken\" lines in this file:");
-    Console.WriteLine("BrokenLinesList.txt");
-}
-catch (ArgumentException)
+    if (!File.Exists(path1))
+    {
+        Console.WriteLine("Wrong path was enter.\nTo exit enter 'x'.");
+    }    
+} while (!File.Exists(path1));
+
+FileProcessor fp = new(path1);
+int lineNumberWithMaxSum = fp.LineNumberWithMaxSumOfElems();
+Console.WriteLine("Number of line with maximum sum of numeric elements:");
+Console.WriteLine(lineNumberWithMaxSum);
+int[] brokenLines = fp.BrokenLines;
+Console.WriteLine("Numbers of lines with non numeric elements:");
+foreach (int num in brokenLines)
 {
-    Console.WriteLine("No path was enter.");
+    Console.Write(num + " ");
 }
-catch (FileNotFoundException)
-{
-    Console.WriteLine("Wrong path was enter.");
-}
+fp.GetTxtFileWithBrokenLines();
+Console.WriteLine();
+Console.WriteLine("You can find the list of \"broken\" lines in this file:");
+Console.WriteLine("BrokenLinesList.txt");
+
 
