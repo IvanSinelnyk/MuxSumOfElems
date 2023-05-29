@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxSumOfElems", "MaxSumOfEl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B778AF3-D085-448E-BEE0-802A1ADF617A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxSumElemsTests", "MaxSumElemsTests\MaxSumElemsTests.csproj", "{1C4DCD39-D565-4862-97BA-814B01D12EFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{E5E14D0E-CF49-4FB7-9FF5-50F2D27C0077}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5E14D0E-CF49-4FB7-9FF5-50F2D27C0077}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5E14D0E-CF49-4FB7-9FF5-50F2D27C0077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4DCD39-D565-4862-97BA-814B01D12EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4DCD39-D565-4862-97BA-814B01D12EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4DCD39-D565-4862-97BA-814B01D12EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4DCD39-D565-4862-97BA-814B01D12EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

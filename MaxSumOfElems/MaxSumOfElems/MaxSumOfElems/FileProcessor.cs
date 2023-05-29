@@ -3,7 +3,7 @@
 
 namespace MaxSumOfElems
 {
-    internal class FileProcessor
+    public class FileProcessor
     {
         private readonly string path;
 
@@ -64,18 +64,6 @@ namespace MaxSumOfElems
             }
 
             return numberMaxSumLine;
-        }
-
-        // TODO: move this method to test project
-        public void GetTxtFileWithBrokenLines()
-        {
-            using (StreamWriter writer = new(@"..\..\..\BrokenLinesList.txt"))
-            {                
-                foreach (int number in BrokenLines)
-                {
-                    writer.Write(number + " ");
-                }
-            }
         }
     }
 }
